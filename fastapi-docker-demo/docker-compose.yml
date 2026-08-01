@@ -1,0 +1,33 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fastapi-docker-demo:latest
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=development
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+# Example of how you'd add a database later:
+#   db:
+#     image: postgres:16-alpine
+#     environment:
+#       - POSTGRES_USER=demo
+#       - POSTGRES_PASSWORD=demo
+#       - POSTGRES_DB=demo
+#     volumes:
+#       - db_data:/var/lib/postgresql/data
+#     ports:
+#       - "5432:5432"
+#
+# volumes:
+#   db_data:
