@@ -7,8 +7,8 @@ on:
     branches: ["main"]
 
 env:
-  IMAGE_NAME: ${{ github.repository }}  # e.g. yourname/fastapi-docker-demo
-
+  # IMAGE_NAME: ${{ github.repository }}  # e.g. yourname/fastapi-docker-demo
+  IMAGE_NAME: jagadeee/fastapi-docker-demo
 jobs:
   # ---------- 1. Run tests on every push/PR ----------
   test:
